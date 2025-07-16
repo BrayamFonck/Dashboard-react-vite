@@ -311,7 +311,6 @@ Agradecimientos especiales a:
 
 ## 🔗 Enlaces Útiles
 
-- **🌐 Demo en Vivo**: [https://brayamfonck.github.io/Dashboard-react-vite](https://brayamfonck.github.io/Dashboard-react-vite)
 - **📖 REST Countries API**: [https://restcountries.com](https://restcountries.com)
 - **⚡ Vite**: [https://vitejs.dev](https://vitejs.dev)
 - **⚛️ React**: [https://react.dev](https://react.dev)
@@ -330,11 +329,6 @@ Si tienes preguntas, sugerencias o quieres reportar problemas, puedes contactar 
 
 ---
 
-## 📜 Licencia
-
-Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
-
----
 
 ¡Gracias por visitar este repositorio! 🚀  
 Esperamos que este proyecto sea útil para ti y que puedas sacarle el máximo provecho.  
