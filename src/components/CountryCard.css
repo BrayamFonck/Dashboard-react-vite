@@ -1,0 +1,271 @@
+.country-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid #e5e7eb;
+  position: relative;
+  height: fit-content;
+}
+
+.country-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.country-card.clickable {
+  cursor: pointer;
+}
+
+.country-card.clickable:focus {
+  outline: 3px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.country-card.clickable:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor de la bandera */
+.flag-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background-color: #f3f4f6;
+}
+
+.flag-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.country-card:hover .flag-image {
+  transform: scale(1.05);
+}
+
+.flag-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  background-color: #f9fafb;
+  color: #6b7280;
+}
+
+/* Contenido de la tarjeta */
+.card-content {
+  padding: 1.5rem;
+}
+
+.country-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+}
+
+.official-name {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0 0 1rem 0;
+  font-style: italic;
+}
+
+/* Lista de detalles */
+.country-details {
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.detail-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem;
+  align-items: start;
+}
+
+.detail-item dt {
+  font-weight: 600;
+  color: #374151;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.detail-item dd {
+  margin: 0;
+  color: #6b7280;
+  word-break: break-word;
+}
+
+/* Indicador de clickeable */
+.click-indicator {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #3b82f6;
+  color: white;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: bold;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+}
+
+.country-card.clickable:hover .click-indicator {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.country-card.clickable:focus .click-indicator {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .flag-container {
+    height: 150px;
+  }
+  
+  .card-content {
+    padding: 1rem;
+  }
+  
+  .country-name {
+    font-size: 1.25rem;
+  }
+  
+  .detail-item {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+  
+  .detail-item dt {
+    font-size: 0.875rem;
+  }
+  
+  .detail-item dd {
+    font-size: 0.875rem;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .country-card {
+    max-width: 400px;
+  }
+}
+
+/* Estados de carga */
+.country-card[aria-busy="true"] {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.country-card[aria-busy="true"]::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .country-card,
+  .flag-image,
+  .click-indicator {
+    transition: none;
+  }
+  
+  .country-card:hover {
+    transform: none;
+  }
+  
+  .country-card:hover .flag-image {
+    transform: none;
+  }
+  
+  .country-card[aria-busy="true"]::after {
+    animation: none;
+  }
+}
+
+/* Alto contraste */
+@media (prefers-contrast: high) {
+  .country-card {
+    border-width: 2px;
+    border-color: #000000;
+  }
+  
+  .country-name {
+    color: #000000;
+  }
+  
+  .detail-item dt {
+    color: #000000;
+  }
+  
+  .detail-item dd {
+    color: #333333;
+  }
+}
+
+/* Modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .country-card {
+    background-color: #1f2937;
+    border-color: #374151;
+  }
+  
+  .country-name {
+    color: #ffffff;
+  }
+  
+  .official-name {
+    color: #9ca3af;
+  }
+  
+  .detail-item dt {
+    color: #e5e7eb;
+  }
+  
+  .detail-item dd {
+    color: #9ca3af;
+  }
+  
+  .flag-placeholder {
+    background-color: #374151;
+    color: #9ca3af;
+  }
+}

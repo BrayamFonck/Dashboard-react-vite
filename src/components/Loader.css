@@ -1,0 +1,100 @@
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.loader-container.small {
+  padding: 1rem;
+}
+
+.loader-container.large {
+  padding: 3rem;
+  min-height: 200px;
+}
+
+.loader-spinner {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+.small .loader-spinner {
+  width: 40px;
+  height: 40px;
+}
+
+.large .loader-spinner {
+  width: 80px;
+  height: 80px;
+}
+
+.spinner-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 3px solid transparent;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite;
+}
+
+.spinner-ring:nth-child(2) {
+  animation-delay: 0.3s;
+  border-top-color: #8b5cf6;
+}
+
+.spinner-ring:nth-child(3) {
+  animation-delay: 0.6s;
+  border-top-color: #06d6a0;
+}
+
+.spinner-ring:nth-child(4) {
+  animation-delay: 0.9s;
+  border-top-color: #f59e0b;
+}
+
+.loader-text {
+  font-size: 1rem;
+  color: #6b7280;
+  font-weight: 500;
+  text-align: center;
+}
+
+.small .loader-text {
+  font-size: 0.875rem;
+}
+
+.large .loader-text {
+  font-size: 1.125rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Reducir animaciones para usuarios que prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .spinner-ring {
+    animation: none;
+  }
+  
+  .loader-spinner::before {
+    content: "⏳";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+  }
+}
